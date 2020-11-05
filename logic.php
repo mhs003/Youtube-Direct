@@ -66,11 +66,13 @@ class logic{
             $fsQLabel = $s['qualityLabel'];
           }
           
-          $format_arr[$i]['type'] = 'video';
-          $format_arr[$i]['url'] = $fsURL;
-          $format_arr[$i]['mimeType'] = $fsType;
-          $format_arr[$i]['Content-Length'] = $fsSize;
-          $format_arr[$i]['quality'] = $fsQLabel;
+          $format_arr[$i] = [
+            'type' => 'video',
+            'url' => $fsURL,
+            'mimeType' => $fsType,
+            'Content-Length' => $fsSize,
+            'quality' => $fsQLabel
+          ];
           $i++;
         }
         
@@ -89,18 +91,20 @@ class logic{
           }
           
           if($this->startsWith($afsType, 'audio')){
-            $aformat_arr[$j]['type'] = 'audio';
+            $afType = 'audio';
+            $afQual = $as['audioQuality'];
           } else {
-            $aformat_arr[$j]['type'] = 'video';
+            $afType = 'video';
+            $afQual = $afsQLabel;
           }
-          $aformat_arr[$j]['url'] = $afsURL;
-          $aformat_arr[$j]['mimeType'] = $afsType;
-          $aformat_arr[$j]['Content-Length'] = $afsSize;
-          if(!$this->startsWith($afsType, 'audio')){
-            $aformat_arr[$j]['quality'] = $afsQLabel;
-          } else {
-            $aformat_arr[$j]['audioQuality'] = $as['audioQuality'];
-          }
+          
+          $aformat_arr[$j] = [
+            'type' => $afType,
+            'url' => $afsURL,
+            'mimeType' => $afsType,
+            'Content-Length' => $afsSize,
+            'quality' => $afQual
+          ];
           $j++;
         }
         
