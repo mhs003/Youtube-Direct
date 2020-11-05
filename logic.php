@@ -22,7 +22,6 @@ class logic{
         $this->id = $param['v'];
         return true;
       } else {
-        //https://youtu.be/NpHti6bOvsw
         $exu = explode('/', $url);
         $this->id = $exu[3];
         return true;
