@@ -41,7 +41,7 @@ class logic{
       
       $info_json = json_decode($info['player_response'], true);
       $video_status = $info_json['playabilityStatus'];
-      if($video_status['status'] == 'OK'){
+      if(strtolower($video_status['status']) == 'ok'){
         // -- VIDEO FOUND --
         
         $stream_data = $info_json['streamingData'];
